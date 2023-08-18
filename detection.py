@@ -40,11 +40,8 @@ def get_limits(color):
 
     return lowerLimit, upperLimit
 
-
-num_id = 1
-path = "D:/Non-System/Learning/Test"
 def main():
-    cap = cv2.VideoCapture(1) # 'Pedestrian_Detect_2_1_1.mp4
+    cap = cv2.VideoCapture(0) # 'Pedestrian_Detect_2_1_1.mp4
     global num_id
     num_id = 0
 
@@ -98,9 +95,8 @@ def main():
                             if non_black_pixels > 100:
                                 cv2.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
                                 print(f"Detecting Red {non_black_pixels}")
-                                # cv2.imwrite(f"{path}/red_{num_id}.jpg", frame)
-                                num_id += 1
                             else:
+                                cv2.rectangle(frame, (startX, startY), (endX, endY), (255, 0, 0), 2)
                                 print(f"Not Detecting Red {non_black_pixels}")
 
         fps_end_time = datetime.datetime.now()
