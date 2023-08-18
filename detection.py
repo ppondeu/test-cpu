@@ -96,7 +96,6 @@ def main():
 
                             mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)
                             redd = cv2.bitwise_and(result,result,mask=mask)
-                            # mask_ = Image.fromarray(mask)
 
                             non_black_pixels = np.sum(np.any(redd != [0, 0, 0], axis=1))
                             if non_black_pixels > 100:
@@ -118,8 +117,7 @@ def main():
             fps = (total_frames / time_diff.seconds)
 
         fps_text = "FPS: {:.2f}".format(fps)
-
-
+               
         cv2.putText(frame, fps_text, (5, 30), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 0, 255), 1)
         txt = passing_percentage(opp_count, team_count)
         cv2.putText(frame, txt, (5, 60), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (0, 255, 255), 1)
@@ -128,10 +126,8 @@ def main():
         key = cv2.waitKey(1)
         if key == ord('q'):
             break
-        print(txt)
         print(f"blue : {opp_count}")
         print(f"red : {team_count}")
-
 
     cv2.destroyAllWindows()
 
